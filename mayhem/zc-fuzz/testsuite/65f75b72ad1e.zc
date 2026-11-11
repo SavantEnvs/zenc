@@ -1,0 +1,7 @@
+// MISRA Rule 11.9 Verification
+// EXPECT: MISRA Rule 11.9
+
+fn main() {
+    // Violation: literal 0 used directly as null pointer constant
+    let _p: int* = (int*)0; 
+}

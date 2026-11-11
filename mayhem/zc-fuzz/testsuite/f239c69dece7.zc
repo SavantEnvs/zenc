@@ -1,0 +1,10 @@
+// MISRA Rule 19.2 Verification
+// EXPECT: MISRA Rule 19.2
+
+// Violation: union keyword shall not be used
+union Data {
+    i: int,
+    f: float
+}
+
+fn main() { }

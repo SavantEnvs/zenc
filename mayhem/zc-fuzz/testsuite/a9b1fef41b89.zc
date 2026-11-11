@@ -1,0 +1,12 @@
+// MISRA Rule 17.2 Verification
+// EXPECT: MISRA Rule 17.2
+
+fn recursive_func(n: i32) -> i32 {
+    if (n <= 1) { return 1; }
+    // Violation: direct recursion
+    return n * recursive_func(n - 1); 
+}
+
+fn main() {
+    let _ = recursive_func(5);
+}

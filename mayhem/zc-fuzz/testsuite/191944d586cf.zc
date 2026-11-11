@@ -1,0 +1,8 @@
+// MISRA Rule Zen 1.5 Verification: var and const keywords removed
+fn main() {
+    let y = 20;
+    def MIN = 0;
+    
+    // const qualifier compliance (C-interop)
+    let z: const int = 30;
+}

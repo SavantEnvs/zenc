@@ -1,0 +1,6 @@
+// EXPECT: FAIL
+// language/features/variables: multi-let without type or init should fail
+
+fn main() {
+    let a = 10, b;
+}

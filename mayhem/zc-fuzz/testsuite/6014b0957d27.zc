@@ -1,0 +1,15 @@
+// comptime: test_comptime_metadata
+comptime {
+    let target = __COMPTIME_TARGET__;
+    let path = __COMPTIME_FILE__;
+    yield("def TARGET_SET = 1;");
+    yield("def PATH_SET = 1;");
+}
+
+test "comptime_metadata_target" {
+    assert(TARGET_SET == 1, "Target metadata set");
+}
+
+test "comptime_metadata_source" {
+    assert(PATH_SET == 1, "Path metadata set");
+}

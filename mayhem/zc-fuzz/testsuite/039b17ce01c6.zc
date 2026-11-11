@@ -1,0 +1,9 @@
+// structs: test_map_ptr
+import "std/map.zc"
+struct RImage {}
+struct ResourceManager {
+    images: Map<RImage*>;
+}
+fn main() {
+    let m = ResourceManager { images: Map<RImage*>::new() };
+}

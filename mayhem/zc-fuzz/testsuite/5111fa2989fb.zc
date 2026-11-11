@@ -1,0 +1,16 @@
+// compiler/interop: interop: test_c_import
+import "math.h" as m;
+
+test "test_c_import" {
+    let x = m::sin(0.0);
+    
+    assert(x == 0.0, "m::sin(0.0) should be 0.0");
+}
+
+extern fn abs(x: int) -> int;
+
+test "test_interop_abs" {
+    let x = -10;
+    let y = abs(x);
+    assert(y == 10, "abs(-10) should return 10");
+}

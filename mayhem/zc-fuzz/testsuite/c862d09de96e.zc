@@ -1,0 +1,6 @@
+// EXPECT: FAIL
+
+fn main() {
+    let test = 10;
+    println("test is {}", test);
+}

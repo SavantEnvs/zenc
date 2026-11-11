@@ -1,0 +1,46 @@
+// MISRA Rule 8.13: Const pointers
+// EXPECT: MISRA Rule 8.13
+// EXPECT: MISRA Rule 8.13
+
+// 1. Function parameter violation
+fn test_const_ptr_fail(p: i32*) -> i32 {
+    let x = *p;
+    return x;
+}
+
+// 2. Trait method tests
+struct S {
+    x: i32;
+}
+
+impl S {
+    // This should PASS Rule 8.13 because it uses 'const self'
+    fn read_const(const self) -> i32 {
+        return self.x;
+    }
+
+    // This should FAIL Rule 8.13 because it uses 'self' but only reads
+    fn read_non_const(self) -> i32 {
+        return self.x;
+    }
+
+    // This should PASS Rule 8.13 because it modifies self
+    fn modify(self) {
+        self.x = self.x + 1;
+    }
+}
+
+fn main() {
+    let val = 10;
+    let r0 = test_const_ptr_fail(&val);
+
+    let s: S;
+    s.x = 42;
+    let r1 = s.read_const();
+    let r2 = s.read_non_const();
+    s.modify();
+
+    if (val + r0 + r1 + r2 > 0) {
+        // use results
+    }
+}

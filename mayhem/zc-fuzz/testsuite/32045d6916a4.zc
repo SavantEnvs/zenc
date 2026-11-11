@@ -1,0 +1,11 @@
+// MISRA Rule 16.4 Verification
+// EXPECT: MISRA Rule 16.4
+
+fn main() {
+    let x = 10;
+    // Rule 16.4: Every match statement shall have a default label
+    match (x) {  
+        1 => {}
+        2 => {}
+    }
+}

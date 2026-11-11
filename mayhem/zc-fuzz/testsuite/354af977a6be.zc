@@ -1,0 +1,25 @@
+// MISRA Rule 15.6 Verification
+// EXPECT: MISRA Rule 15.6
+// EXPECT: MISRA Rule 15.6
+// EXPECT: MISRA Rule 15.6
+// EXPECT: MISRA Rule 15.6
+
+fn main() {
+    let x = 10;
+    
+    // Violation: if body not compound
+    if (x > 5)
+        x = 0;
+
+    if (x == 1) {
+        x = 2;
+    } else 
+        // Violation: else body not compound
+        x = 3;             
+
+    // Violation: while body not compound
+    while (x < 15) x += 1;         
+
+    // Violation: for body not compound
+    for i in 0..10 x += i;         
+}

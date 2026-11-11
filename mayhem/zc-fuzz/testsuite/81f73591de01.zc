@@ -1,0 +1,18 @@
+// MISRA Rule 11.5 Verification
+// EXPECT: MISRA Rule 11.5
+
+fn test_void_ptr_cast() {
+    let x: int = 42;
+    let px: int* = &x;
+    let pv: void* = (void*)px; // OK: object to void is fine
+    
+    // Violation 1
+    let _p_bad: int* = (int*)pv;
+    
+    // Violation 2
+    let _p_bad2: int* = (int*)pv;
+}
+
+fn main() {
+    test_void_ptr_cast();
+}

@@ -1,0 +1,10 @@
+// MISRA Rule 11.3 Verification
+// EXPECT: MISRA Rule 11.3
+
+fn main() {
+    let i = 10;
+    let pi: int* = &i;
+    
+    // Violation: Cast between pointer to object and different object type
+    let _pf: float* = (float*)pi;
+}

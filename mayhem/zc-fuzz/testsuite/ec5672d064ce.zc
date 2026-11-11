@@ -1,0 +1,7 @@
+// MISRA Rule 6.1: Bit-fields shall only be declared with an appropriate type
+// EXPECT: MISRA Rule 6.1
+struct _BitFieldType {
+    f1: f32 : 1, // Error: floating type not allowed for bit-field
+}
+
+fn main() {}

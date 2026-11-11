@@ -1,0 +1,19 @@
+// MISRA Dir 4.7 Verification
+// EXPECT: MISRA Dir 4.7
+
+struct Result {
+    value: int,
+    err: int
+}
+
+fn do_something_risky() -> Result {
+    let r: Result;
+    r.value = 1;
+    r.err = 0;
+    return r;
+}
+
+fn main() {
+    // Violation: Dir 4.7 -> error information is not tested
+    do_something_risky();
+}

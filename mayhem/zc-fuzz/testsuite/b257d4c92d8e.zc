@@ -1,0 +1,14 @@
+// MISRA Rule 10.7 Verification
+// EXPECT: MISRA Rule 10.7
+
+fn test_misra_composite_operand_fail() {
+    let u16_a: u16 = 10u16;
+    let u16_b: u16 = 20u16;
+    let u32_c: u32 = 100u32;
+    // Violation: u16_a + u16_b is composite (u16), u32_c is wider
+    let _res = (u16_a + u16_b) + u32_c; 
+}
+
+fn main() {
+    test_misra_composite_operand_fail();
+}

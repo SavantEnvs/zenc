@@ -1,0 +1,24 @@
+// MISRA Rule 15.5: A function shall have a single point of exit at the end.
+// EXPECT: MISRA Rule 15.5
+
+fn test_multiple_returns(x: int) -> int {
+    if x > 0 {
+        return 1;
+    }
+    return 0; // FAIL: 2 return points
+}
+
+fn test_single_return(x: int) -> int {
+    let res = 0;
+    if x > 0 {
+        res = 1;
+    } else {
+        res = 0;
+    }
+    return res; // PASS
+}
+
+fn main() {
+    let _ = test_multiple_returns(10);
+    let _ = test_single_return(10);
+}

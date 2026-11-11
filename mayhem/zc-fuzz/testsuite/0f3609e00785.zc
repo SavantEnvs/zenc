@@ -1,0 +1,7 @@
+// MISRA Rule 20.10 Verification
+// EXPECT: MISRA Rule 20.10
+
+#define MACRO(x) #x // EXPECT: MISRA Rule 20.10
+
+fn main() {
+}

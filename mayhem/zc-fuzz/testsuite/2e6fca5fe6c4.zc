@@ -1,0 +1,9 @@
+// Rule Zen 1.8: Forbid identifier shadowing in nested scopes (Alias for 5.3).
+// EXPECT: MISRA Rule 5.3
+
+fn test_shadowing_violation() {
+    let unique_outer_id = 42;
+    {
+        let unique_outer_id = 100; // EXPECT: MISRA Rule 5.3
+    }
+}

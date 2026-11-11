@@ -1,0 +1,10 @@
+// MISRA Rule 11.8 Verification
+// EXPECT: MISRA Rule 11.8
+
+fn main() {
+    let i = 10;
+    let pi: const int* = &i; 
+    
+    // Violation: Cast shall not remove const qualification
+    let _pf: int* = (int*)pi;
+}

@@ -1,0 +1,10 @@
+// MISRA Rule 18.4 Verification
+// EXPECT: MISRA Rule 18.4
+
+fn main() {
+    let x = 10;
+    let ptr: int* = &x;
+    
+    // Violation: pointer arithmetic
+    let _ptr2 = ptr + 1; 
+}

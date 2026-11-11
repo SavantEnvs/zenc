@@ -1,0 +1,7 @@
+// MISRA Rule 2.3: Unused type declarations
+// EXPECT: MISRA Rule 2.3
+type UnusedAlias = i32;
+
+fn main() {
+    // UnusedAlias is never used
+}

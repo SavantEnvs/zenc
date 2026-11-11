@@ -1,0 +1,16 @@
+// types: test_tuple_literal
+fn get_five() -> int {
+    return 5;
+}
+
+test "complex_tuple_init" {
+    // Both of these used to fail with "/* complex expr */0"
+    let a = (1 + 2, get_five());
+    let b = (a.v0 * 2, a.v1 * 2);
+
+    assert a.v0 == 3;
+    assert a.v1 == 5;
+    
+    assert b.v0 == 6;
+    assert b.v1 == 10;
+}

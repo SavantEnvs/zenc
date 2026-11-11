@@ -1,0 +1,28 @@
+import "std/vec.zc"
+import "std/string.zc"
+import "std/map.zc"
+import "std/io.zc"
+
+fn main() {
+    // Test Vec
+    let v = Vec<int>::new();
+    v.push(1);
+    v.push(2);
+    v.push(3);
+    
+    // Test String
+    let s = String::from("Hello MISRA");
+    s.append_c(" World");
+    
+    // Test Map
+    let m = Map<int>::new();
+    m.put("key1", 100);
+    m.put("key2", 200);
+    
+    println "MISRA Stdlib Test Complete";
+    
+    // In MISRA mode, free calls are no-ops, but we call them anyway
+    v.free();
+    s.free();
+    m.free();
+}

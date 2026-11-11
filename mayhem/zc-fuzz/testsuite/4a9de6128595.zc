@@ -1,0 +1,30 @@
+// traits: test_trait_return_generic
+import "std/vec.zc"
+
+trait GenericReturn {
+    fn get_vec(self) -> Vec<int>;
+}
+
+struct DataSource {
+    count: int;
+}
+
+impl GenericReturn for DataSource {
+    fn get_vec(self) -> Vec<int> {
+        let v = Vec<int>::new();
+        for (let i = 0; i < self.count; i++) {
+            v.push(i);
+        }
+        return v;
+    }
+}
+
+test "trait_return_generic_vec" {
+    let ds = DataSource { count: 5 };
+    let gr: GenericReturn = &ds;
+    
+    let v = gr.get_vec();
+    assert(v.len == 5, "Vec length should be 5");
+    assert(v.get(0) == 0, "First element should be 0");
+    assert(v.get(4) == 4, "Last element should be 4");
+}

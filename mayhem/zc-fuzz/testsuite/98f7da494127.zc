@@ -1,0 +1,11 @@
+// MISRA Rule 16.7 Verification
+// EXPECT: MISRA Rule 16.7
+
+fn main() {
+    let b = true;
+    // Rule 16.7: Boolean expression in match shall not be used
+    match (b) {  
+        true => {}
+        _    => {}
+    }
+}

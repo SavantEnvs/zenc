@@ -1,0 +1,34 @@
+// MISRA Rule 16.3: An unconditional break or return shall terminate every switch-clause.
+// EXPECT: MISRA Rule 16.3
+
+fn test_match_no_termination(x: int) -> int {
+    match x {
+        0 => {
+            let _ = 0;
+            // FAIL: Missing break/return
+        }
+        1 => {
+            return 1; // PASS: explicit return
+        }
+        _ => {
+            return 0; // PASS: explicit return
+        }
+    }
+    return 0;
+}
+
+fn test_match_safe(x: int) -> int {
+    match x {
+        0 => {
+            return 10;
+        }
+        _ => {
+            return 20;
+        }
+    }
+}
+
+fn main() {
+    let _ = test_match_no_termination(0);
+    let _ = test_match_safe(1);
+}

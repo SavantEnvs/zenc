@@ -1,0 +1,24 @@
+// MISRA Rule 14.3 Verification
+// EXPECT: MISRA Rule 14.3
+// EXPECT: MISRA Rule 14.3
+// EXPECT: MISRA Rule 14.3
+
+fn test_misra_invariant_while() {
+    let i = 0;
+    while (1) { // Violation (Invariant)
+        if (i == 0) {
+            break;
+        }
+    }
+}
+
+fn test_misra_invariant_for() {
+    for (; 1; ) { // Violation (Invariant)
+        break;
+    }
+}
+
+fn main() {
+    test_misra_invariant_while();
+    test_misra_invariant_for();
+}

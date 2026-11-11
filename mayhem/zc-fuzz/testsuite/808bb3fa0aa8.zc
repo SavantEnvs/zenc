@@ -1,0 +1,37 @@
+// MISRA Rule 10.4 Verification
+// EXPECT: MISRA Rule 10.4
+// EXPECT: MISRA Rule 10.4
+// EXPECT: MISRA Rule 10.4
+// EXPECT: MISRA Rule 10.4
+// EXPECT: MISRA Rule 10.4
+
+fn test_misra_balancing() {
+    let u32_val: u32 = 10u;
+    let i32_val: i32 = 20;
+
+    // OK: Same essential type category (Unsigned)
+    let _u_sum = u32_val + 2u;
+    
+    // Violation: Unsigned + Signed
+    let _fail1 = u32_val + 5; 
+    
+    // Violation: Unsigned + Signed
+    let _fail2 = u32_val + i32_val;
+    
+    // Violation: Unsigned vs 0 (Signed)
+    if (u32_val < 0) {} 
+
+    // Violation: Unsigned == Signed
+    if (u32_val == i32_val) {}
+
+    let b: bool = true;
+    // Violation: Boolean == Signed
+    if (b == 1) {} 
+    
+    // OK: Same category (Boolean)
+    if (b == false) {}
+}
+
+fn main() {
+    test_misra_balancing();
+}

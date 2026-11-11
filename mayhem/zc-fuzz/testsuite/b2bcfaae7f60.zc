@@ -1,0 +1,24 @@
+fn foo(a: int, b: int) {}
+
+fn main() {
+    let i = 0;
+    
+    // 1. Simple collision in assignment
+    // EXPECT: MISRA Rule 13.2: symbol modified multiple times in assignment
+    i = i++; // Prohibited by 13.2
+    
+    // 2. Collision in binary expression
+    // EXPECT: MISRA Rule 13.2: symbol both read and modified in same expression
+    let x = (i++) + i; // Prohibited by 13.2
+    
+    // 3. Collision in function arguments
+    // EXPECT: MISRA Rule 13.2: argument read and modified in same call
+    foo(i++, i++); // Prohibited by 13.2
+
+    // 4. Cross-argument collision (Read vs Write)
+    // EXPECT: MISRA Rule 13.2: argument read and modified in same call
+    foo(i++, i); // Prohibited by 13.2
+    
+    // 5. No collision (OK)
+    let y = (i++) + 5; // OK
+}

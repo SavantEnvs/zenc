@@ -1,0 +1,17 @@
+// MISRA Rule 15.4 Verification
+// EXPECT: MISRA Rule 15.4
+
+fn main() {
+    let x = 0;
+    while x < 10 {
+        if x == 5 {
+            break;
+        }
+        
+        if x == 7 {
+            // Violation: second break in same loop
+            break;
+        }
+        x += 1;
+    }
+}

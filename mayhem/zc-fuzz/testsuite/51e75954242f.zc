@@ -1,0 +1,6 @@
+// EXPECT: FAIL
+// compiler/diagnostics: def constants must be initialized
+
+fn main() {
+    def X: int;
+}

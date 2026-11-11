@@ -1,0 +1,18 @@
+// EXPECT: FAIL
+
+fn add_128_bit_register(x: i128) -> i128 {
+    let result: i128;
+    asm {
+        "add {result}, {x}, #1"
+        : out(result)
+        : in(x)
+    }
+    return result;
+}
+
+test "test_asm_128_bit_register" {
+    println "Testing assembly 128-bit parameters...";
+    let val = add_128_bit_register(1);
+    assert(val == 2, "Failed: expected 2, got {val}");
+    println "-> Success! add_128_bit_register(1) = 2";
+}

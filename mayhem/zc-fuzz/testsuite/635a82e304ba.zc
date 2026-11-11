@@ -1,0 +1,46 @@
+// language/generics: generics: test_default_args
+struct Handle<T> {
+    data: T*;
+}
+
+impl Handle<T> {
+    fn new(value: T = T{}) -> Handle {
+        let b = Handle{};
+        b.data = malloc(sizeof(T));
+        *b.data = value;
+        return b;
+    }
+
+    fn get(self) -> T {
+        return *self.data;
+    }
+
+    fn free(self) {
+        free(self.data);
+    }
+}
+
+test "generic default arguments (int)" {
+    let h = Handle<int>::new();
+    assert(h.get() == 0, "Default int value should be 0");
+    h.free();
+}
+
+test "generic default arguments (pointer)" {
+    let h = Handle<int*>::new();
+    assert(h.get() == NULL, "Default pointer value should be NULL");
+    h.free();
+}
+
+struct Point {
+    x: int;
+    y: int;
+}
+
+test "generic default arguments (struct)" {
+    let h = Handle<Point>::new();
+    let p = h.get();
+    assert(p.x == 0, "Default struct field x should be 0");
+    assert(p.y == 0, "Default struct field y should be 0");
+    h.free();
+}

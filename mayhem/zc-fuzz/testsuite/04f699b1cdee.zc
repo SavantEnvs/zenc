@@ -1,0 +1,9 @@
+// MISRA Rule 2.7: Unused function parameter
+// EXPECT: MISRA Rule 2.7
+fn test_rule_2_7(used: i32, unused: i32) -> i32 {
+    return used;
+}
+
+fn main() {
+    test_rule_2_7(1, 2);
+}

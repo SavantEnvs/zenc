@@ -1,0 +1,15 @@
+// language/modules: modules: test_dynamic_plugin
+import plugin "plugins/brainfuck" as bf
+import "std/io.zc"
+
+test "dynamic plugin loading" {
+    // Basic Brainfuck: prints 'A' (ASCII 65)
+    // +++++ +++++ [ > +++++ + < - ] > +++++ .
+    // 10 * 6 + 5 = 65
+    bf! {
+        ++++++++++[>++++++<-]>+++++.
+    }
+
+    println "";
+    assert(true, "Plugin loaded and executed");
+}

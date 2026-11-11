@@ -1,0 +1,8 @@
+// MISRA Rule 13.4 Verification
+// EXPECT: MISRA Rule 13.4
+
+fn main() {
+    let i = 0;
+    // Violation: The result of an assignment is used
+    let _j = (i = 5); 
+}

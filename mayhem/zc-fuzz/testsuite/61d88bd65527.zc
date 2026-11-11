@@ -1,0 +1,5 @@
+// EXPECT: FAIL
+// compiler/diagnostics: @derive must specify traits
+
+@derive
+struct Foo { x: int; }

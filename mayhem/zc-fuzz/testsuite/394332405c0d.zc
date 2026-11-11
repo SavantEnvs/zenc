@@ -1,0 +1,13 @@
+// language/misc: misc: test_const_hex
+def CONST_HEX = 0x10;
+def CONST_OCT = 0o10;
+
+fn main() {
+    if (CONST_HEX != 16) {
+        return 1;
+    }
+    if (CONST_OCT != 8) {
+        return 2;
+    }
+    return 0;
+}

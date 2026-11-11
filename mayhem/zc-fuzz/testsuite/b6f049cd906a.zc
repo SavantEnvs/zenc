@@ -1,0 +1,10 @@
+// Rule 5.2: Identifiers declared in the same scope and name space shall be distinct
+// EXPECT: MISRA Rule 5.2
+// Significance limit for internal identifiers is 63 characters in this implementation.
+
+fn main() {
+    let _very_long_internal_variable_name_that_should_collide_at_sixty_three_chars_a = 1;
+    // Overlap is 66 characters:
+    // _very_long_internal_variable_name_that_should_collide_at_sixty_three_chars_
+    let _very_long_internal_variable_name_that_should_collide_at_sixty_three_chars_b = 2;
+}

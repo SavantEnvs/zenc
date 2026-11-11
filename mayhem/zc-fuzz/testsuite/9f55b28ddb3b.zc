@@ -1,0 +1,9 @@
+// MISRA Rule 11.2 Verification
+// EXPECT: MISRA Rule 11.2
+
+extern struct IncompleteStruct; 
+
+fn main() {
+    let ptr: IncompleteStruct*;
+    let _casted: int* = (int*)ptr; // EXPECT: MISRA Rule 11.2
+}

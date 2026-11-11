@@ -1,0 +1,36 @@
+// language/generics: generics: test_generics_struct
+struct Wrapper<T> {
+    item: T;
+    id: int;
+}
+
+test "test_generics_struct" {
+    // Instantiate with int
+    let w1: Wrapper<int>;
+    w1.id = 1;
+    w1.item = 500;
+    
+    println "Wrapper Int: {w1.item} (ID: {w1.id})";    
+}
+
+struct RcInner<T> {
+    value: T;
+    ref_count: usize;
+}
+
+struct Rc<T> {
+    inner: RcInner<T>*;
+}
+
+impl Rc<T> {
+    fn new(_value: T) -> Self {
+        let inner: RcInner<T>* = 0;
+        return Self {
+            inner: inner
+        };
+    }
+}
+
+test "test_rc_pointer_instantiation" {
+    let _value = Rc<i32>::new(4);
+}

@@ -1,0 +1,11 @@
+// MISRA Dir 4.5 Verification
+// EXPECT: MISRA Dir 4.5: identifier 'varl' is typographically ambiguous with 'var1'
+// EXPECT: MISRA Dir 4.5: identifier 'varO' is typographically ambiguous with 'var0'
+
+fn main() {
+    let var1 = 1;
+    let varl = 2; // Violation Dir 4.5!
+
+    let var0 = 0;
+    let varO = 1; // Violation Dir 4.5!
+}

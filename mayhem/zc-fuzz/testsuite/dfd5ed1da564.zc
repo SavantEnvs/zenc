@@ -1,0 +1,10 @@
+// MISRA Rule 16.6 Verification
+// EXPECT: MISRA Rule 16.6
+
+fn main() {
+    let x = 10;
+    // Rule 16.6: Every match statement shall have at least two clauses
+    match (x) {  
+        _ => {}
+    }
+}

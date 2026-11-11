@@ -1,0 +1,25 @@
+// language/features/tuples: tuples: test_tuple_mangling_ptr
+enum Event {
+    Create(char*, char*),
+    Delete(char*),
+    Change(char*, char*, int)
+}
+
+fn main() {
+    // Test tuple in enum variant with pointers
+    let e = Event::Create("dir", "file");
+    match e {
+        Event::Create(d, f) => {
+            assert(strcmp(d, "dir") == 0, "dir == 'dir'");
+            assert(strcmp(f, "file") == 0, "file == 'file'");
+        }
+        _ => { assert(false, "Should match Create variant"); }
+    }
+
+    // Test direct tuple with pointer
+    let t: (char*, int) = ("hello", 42);
+    assert(strcmp(t.0, "hello") == 0, "t.0 == 'hello'");
+    assert(t.1 == 42, "t.1 == 42");
+
+    return 0;
+}

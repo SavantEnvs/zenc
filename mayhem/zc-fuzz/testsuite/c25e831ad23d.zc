@@ -1,0 +1,9 @@
+// MISRA Rule 2.4: Unused tag declarations
+// EXPECT: MISRA Rule 2.4
+struct UnusedTag {
+    x: i32,
+}
+
+fn main() {
+    // UnusedTag is never used
+}

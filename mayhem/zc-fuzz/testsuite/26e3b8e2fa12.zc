@@ -1,0 +1,12 @@
+// MISRA Rule 18.8: Variable-length array types shall not be used
+// EXPECT: MISRA Rule 18.8
+
+fn test_vla(n: i32) {
+    // In Zen, this is traditionally allowed if n is a known value,
+    // but MISRA forbids VLAs entirely on the stack.
+    let arr: i32[n]; // Error: VLA not allowed
+}
+
+fn main() {
+    test_vla(10);
+}

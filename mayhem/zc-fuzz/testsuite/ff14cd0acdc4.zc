@@ -1,0 +1,10 @@
+// MISRA Rule 15.3: Jumping backwards with goto
+// EXPECT: MISRA Rule 15.2
+// EXPECT: MISRA Rule 15.3
+fn main() {
+label_start:
+    let x = 10;
+    if x == 10 {
+        goto label_start;
+    }
+}

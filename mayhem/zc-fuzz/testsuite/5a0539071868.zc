@@ -1,0 +1,10 @@
+// collections: test_vec_simple
+import "std/vec.zc"
+
+test "vec_simple" {
+    let v = Vec<int>::new();
+    v.push(42);
+    assert(v.len == 1, "Len should be 1");
+    assert(v.get(0) == 42, "Element should be 42");
+    v.free();
+}

@@ -1,0 +1,6 @@
+// MISRA Rule 12.4 Verification
+// EXPECT: MISRA Rule 12.4
+
+fn main() {
+    let _u: u8 = 255 + 1; // EXPECT: MISRA Rule 12.4
+}

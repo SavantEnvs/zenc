@@ -1,0 +1,12 @@
+// MISRA Rule 15.1 Verification
+// EXPECT: MISRA Rule 15.1
+
+fn main() -> int {
+    let _x = 0;
+    
+    // Violation: goto used
+    goto end;
+    
+label end:
+    return 0;
+}

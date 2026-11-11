@@ -1,0 +1,14 @@
+// MISRA Rule 17.5 Verification
+// EXPECT: MISRA Rule 17.5
+
+fn takes_array_10(a: [int; 10]) { }
+
+fn main() {
+    let a5: [int; 5];
+    // Violation: passing smaller array to function expecting fixed size
+    takes_array_10(a5); 
+
+    // This should NOT trigger Rule 17.5 anymore (variable initialization)
+    // It should trigger Rule 9.3 (Partial Initialization) if we had a check for that here.
+    let _a10: [int; 10] = [1, 2, 3]; 
+}

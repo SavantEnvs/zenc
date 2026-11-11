@@ -1,0 +1,7 @@
+// MISRA Rule 6.2: Single-bit named bit fields shall not be of a signed type
+// EXPECT: MISRA Rule 6.2
+struct _SingleBitSigned {
+    f1: i32 : 1, // Error: 1-bit field must be unsigned or boolean
+}
+
+fn main() {}

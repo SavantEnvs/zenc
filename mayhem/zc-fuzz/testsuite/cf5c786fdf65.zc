@@ -1,0 +1,16 @@
+// MISRA Rule 14.4 Verification
+// EXPECT: MISRA Rule 14.4
+// EXPECT: MISRA Rule 14.4
+
+fn main() {
+    let p: int* = NULL;
+    // Violation
+    if (p) {
+    }
+
+    let x: i32 = 5;
+    // Violation: integer as condition
+    while (x) {
+        x = x - 1;
+    }
+}

@@ -1,0 +1,13 @@
+// Rule 5.7: Tag name shall be a unique identifier
+
+struct _DuplicateTag {
+    x: i32
+}
+
+// Rule 5.7 says tag names shall be unique identifiers across the program
+// EXPECT: MISRA Rule 5.7
+struct _DuplicateTag { 
+    y: f64
+}
+
+fn main() {}

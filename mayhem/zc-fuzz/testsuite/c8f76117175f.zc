@@ -1,0 +1,7 @@
+// MISRA Rule 8.11 Verification
+// EXPECT: MISRA Rule 8.11
+
+let _my_array: int[];
+
+fn main() {
+}

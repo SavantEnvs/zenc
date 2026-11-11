@@ -1,0 +1,10 @@
+project: savantenvs/zenc
+target: zc-fuzz
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/zc-fuzz/testsuite
+cmds:
+  - cmd: /mayhem/zc-fuzz
+    libfuzzer: true
+    dictionary: /mayhem/fuzz/zen_c.dict
+    timeout: 5

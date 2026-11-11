@@ -1,0 +1,39 @@
+// traits: test_trait_const_self
+trait Reader {
+    fn read(const self) -> i32;
+    fn read_mut(self) -> i32;
+}
+
+struct MyStruct {
+    x: i32,
+}
+
+impl Reader for MyStruct {
+    fn read(const self) -> i32 {
+        return self.x;
+    }
+
+    fn read_mut(self) -> i32 {
+        self.x = self.x + 1;
+        return self.x;
+    }
+}
+
+test "test_const_trait" {
+    let s = MyStruct { x: 42 };
+    let r: Reader = &s;
+
+    // Call const method
+    let v1 = r.read();
+    assert v1 == 42;
+
+    // Call mut method
+    let v2 = r.read_mut();
+    assert v2 == 43;
+
+    // Call const method again
+    let v3 = r.read();
+    assert v3 == 43;
+
+    println "Trait const self test passed!";
+}

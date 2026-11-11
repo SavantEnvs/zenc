@@ -1,0 +1,31 @@
+// structs: test_const_self
+struct Point {
+    x: i32;
+    y: i32;
+}
+
+impl Point {
+    fn get_x(const self) -> i32 {
+        return self.x;
+    }
+
+    fn get_sum(const self) -> i32 {
+        return self.x + self.y;
+    }
+
+    fn increment(self) {
+        self.x = self.x + 1;
+    }
+}
+
+test "const self methods" {
+    let p = Point { x: 10, y: 20 };
+    assert(p.get_x() == 10, "get_x failed");
+    assert(p.get_sum() == 30, "get_sum failed");
+
+    p.increment();
+    assert(p.get_x() == 11, "increment failed");
+    assert(p.get_sum() == 31, "increment sum failed");
+
+    println "  Point {p.x}, {p.y} - Const self methods verified";
+}

@@ -1,0 +1,27 @@
+// Rule 9.4: A variable shall not be initialized more than once.
+// In Zen C, this applies to struct fields in a struct initializer.
+
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+struct Rect {
+    top_left: Point,
+    bottom_right: Point,
+}
+
+fn main() -> i32 {
+    let p = Point {
+        x: 1,
+        y: 2,
+        x: 3, // EXPECT: MISRA Rule 9.4
+    };
+
+    let r = Rect {
+        top_left: Point { x: 0, y: 0 },
+        bottom_right: Point { x: 10, y: 10, x: 5 }, // nested; EXPECT: MISRA Rule 9.4
+    };
+
+    return 0;
+}

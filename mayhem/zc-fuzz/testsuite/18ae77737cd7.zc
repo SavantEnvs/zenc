@@ -1,0 +1,18 @@
+// asm: test_asm_clobber
+fn add(a: int, b: int) -> int {
+    let result: int;
+    asm {
+        "mov {a}, {result}"
+        "add {b}, {result}"
+        : out(result)
+        : in(a), in(b)
+        : clobber("cc")
+    }
+    return result;
+}
+
+test "asm_clobber" {
+    let res = add(10, 20);
+    assert(res == 30, "Failed: Expected 30, got {res}");
+    println "Success: asm with clobber works properly";
+}

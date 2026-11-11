@@ -1,0 +1,20 @@
+// MISRA Rule 10.2 Verification
+// EXPECT: MISRA Rule 10.2
+
+fn test_char_arithmetic() {
+    let c1: char = 'A';
+    let c2: char = 'B';
+    
+    let _ok = c2 - c1; // OK: char - char allowed
+    
+    // Violation 1
+    let _bad = c1 + c2;
+    
+    let i: i32 = 5;
+    // Violation 2
+    let _bad2 = c1 + i;
+}
+
+fn main() {
+    test_char_arithmetic();
+}

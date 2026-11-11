@@ -1,0 +1,42 @@
+// generics: test_generic_ptr
+import "std/vec.zc"
+import "std/result.zc"
+
+test "generic pointer instantiation" {
+    
+    // Vector of ints (internally int*) nested in Result
+    let v = Vec<int>::new();
+    v.push(10);
+    v.push(20);
+    v.push(30);
+
+    let res = Result<Vec<int>>::Ok(v);
+    
+    // Test unwrapping (signatures involving int*)
+    let unwrapped = res.unwrap_ref();
+    assert(unwrapped.get(0) == 10);
+    assert(unwrapped.get(1) == 20);
+    assert(unwrapped.get(2) == 30);
+}
+
+// I will have to work on this one, so TODO.
+/*
+test "generic pointer double nesting" {
+    // Double nesting - Result<Vec<int*>>
+    
+    let v_ptr = Vec<int*>::new();
+    let a: int = 100;
+    let b: int = 200;
+    
+    v_ptr.push(&a);
+    v_ptr.push(&b);
+    
+    let res_ptr = Result<Vec<int*>>::Ok(v_ptr);
+    let unwrapped_ptr = res_ptr.unwrap();
+    
+    assert(*unwrapped_ptr.get(0) == 100);
+    assert(*unwrapped_ptr.get(1) == 200);
+    
+    unwrapped_ptr.free();
+}
+*/

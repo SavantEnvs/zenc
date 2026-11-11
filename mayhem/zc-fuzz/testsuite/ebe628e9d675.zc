@@ -1,0 +1,8 @@
+// MISRA Rule 8.9 Verification
+// EXPECT: MISRA Rule 8.9
+
+let _only_used_here: int = 5; // EXPECT: MISRA Rule 8.9
+
+fn main() {
+    let _a = _only_used_here;
+}

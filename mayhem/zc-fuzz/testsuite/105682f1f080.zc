@@ -1,0 +1,49 @@
+// iterators: test_iterator_drop
+import "std/iter.zc"
+import "std/mem.zc"
+
+let DROP_CALLED = 0;
+
+struct DropIter {
+    count: int;
+}
+
+impl DropIter {
+    fn next(self) -> Option<int> {
+        if self.count > 0 {
+            self.count -= 1;
+            return Option<int>::Some(self.count);
+        }
+        return Option<int>::None();
+    }
+}
+
+impl Drop for DropIter {
+    fn drop(self) {
+        DROP_CALLED = 1;
+        println "Iterator dropped";
+    }
+}
+
+struct DropRange {
+    len: int;
+}
+
+impl DropRange {
+    fn iterator(self) -> DropIter {
+        return DropIter { count: self.len };
+    }
+}
+
+test "iterator_drop" {
+    {
+        let range = DropRange { len: 3 };
+        for i in range {
+            // Loop runs 3 times
+            let _ignore = i;
+        }
+        // Iterator should be dropped here
+    }
+
+    assert(DROP_CALLED == 1, "Error: Iterator was not dropped! (DROP_CALLED={DROP_CALLED})");
+}

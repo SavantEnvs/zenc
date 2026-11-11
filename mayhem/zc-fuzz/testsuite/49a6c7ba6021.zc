@@ -1,0 +1,11 @@
+// MISRA Rule 17.1 Verification
+// EXPECT: MISRA Rule 17.1
+
+fn test_varargs(n: int, ...) {
+    let ap: byte*; // Dummy va_list
+    // Violation: stdarg features shall not be used
+    va_start(ap, n);
+    va_end(ap);
+}
+
+fn main() { }

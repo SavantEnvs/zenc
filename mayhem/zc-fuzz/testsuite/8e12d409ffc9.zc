@@ -1,0 +1,4 @@
+// MISRA Rule 20.13 Verification
+// N/A - Natively enforced by Zen C language constraints.
+fn main() {
+}

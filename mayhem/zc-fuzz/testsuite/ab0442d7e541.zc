@@ -1,0 +1,9 @@
+// MISRA Rule 17.7 Verification
+// EXPECT: MISRA Rule 17.7
+
+fn returns_value() -> int { return 42; }
+
+fn main() {
+    // Violation: return value ignored
+    returns_value(); 
+}

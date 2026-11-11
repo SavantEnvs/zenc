@@ -1,0 +1,12 @@
+// MISRA Rule 16.5 Verification
+// EXPECT: MISRA Rule 16.5
+
+fn main() {
+    let x = 10;
+    // Rule 16.5: Default must be first or last
+    match (x) {  
+        1 => {}
+        _ => {}
+        2 => {}
+    }
+}

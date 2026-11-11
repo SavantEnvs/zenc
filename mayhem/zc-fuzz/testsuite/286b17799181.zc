@@ -1,0 +1,22 @@
+// MISRA Rule 18.5 Verification
+// EXPECT: MISRA Rule 18.5
+// EXPECT: MISRA Rule 18.5
+// EXPECT: MISRA Rule 18.5
+
+struct Deep {
+    // Violation: 3 levels of nesting
+    p: int***; 
+}
+
+fn nested_params(p: int***) { 
+    // Violation: 3 levels of nesting
+}
+
+fn main() {
+    let x = 10;
+    let ptr: int* = &x;
+    let _ptr2: int** = &ptr; // OK: 2 levels
+    
+    // Violation: 3 levels of nesting
+    let _ptr3: int***; 
+}

@@ -1,0 +1,11 @@
+// codegen: test_dangle_warn
+import "std/option.zc"
+
+fn get_optional_int() -> Option<int> {
+    return Option<int>::Some(1);
+}
+
+fn main() {
+    let n = get_optional_int().unwrap();
+    "{n}";
+}

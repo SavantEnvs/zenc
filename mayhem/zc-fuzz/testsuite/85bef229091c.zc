@@ -1,0 +1,16 @@
+// Rule Zen 1.3: Forbid the wildcard '_' in match statements for enums.
+// EXPECT: MISRA Rule Zen 1.3
+
+@export
+enum MyColor {
+    Red,
+    Green
+}
+
+fn test_match_wildcard_violation() {
+    let clr = MyColor::Red;
+    match clr {
+        MyColor::Red => { }
+        _ => { } // EXPECT: MISRA Rule Zen 1.3
+    }
+}

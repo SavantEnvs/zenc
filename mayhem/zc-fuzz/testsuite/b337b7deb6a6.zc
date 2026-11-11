@@ -1,0 +1,39 @@
+// language/generics: generics: test_generics_fn
+fn identity<T>(x: T) -> T {
+    return x;
+}
+
+struct Box<T> {
+    val: T;
+}
+
+// Generic Impl
+impl Box<T> {
+    fn get(self) -> T {
+        return self.val;
+    }
+}
+
+test "Generics" {
+    // Generic Function
+    let i = identity<int>(42);
+    assert(i == 42, "Generic function failed");
+
+    // Generic Struct & Impl
+    let b = Box<int> { val: 100 };
+    assert(b.get() == 100, "Generic impl failed");
+}
+
+struct Container { }
+
+impl Container {
+    fn check_size<T>(self, value: T) -> int {
+        return sizeof(value);
+    }
+}
+
+test "Generic Method in Regular Impl" {
+    let c = Container{};
+    assert(c.check_size<int>(10) == sizeof(int), "Generic method int size");
+    assert(c.check_size<double>(3.14) == sizeof(double), "Generic method double size");
+}

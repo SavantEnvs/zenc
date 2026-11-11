@@ -1,0 +1,7 @@
+// MISRA Rule 2.5: Unused macro (constant) declarations
+// EXPECT: MISRA Rule 2.5
+def UNUSED_CONST: i32 = 42;
+
+fn main() {
+    // UNUSED_CONST is never used
+}

@@ -1,0 +1,27 @@
+// EXPECT: FAIL
+// language/features/closures: test_closure_capture_move  --  should fail compilation
+struct Mover {
+  val: int
+}
+
+impl Drop for Mover {
+  fn drop(self) {}
+}
+
+fn consume(func: fn()) {
+  func()
+}
+
+fn main() {
+  let m = Mover { val: 10 }
+  
+  // Capture by value should move 'm'
+  consume(fn[=]() {
+     let x = m.val 
+  })
+
+  // 'm' is moved, this should fail
+  consume(fn[=]() {
+     let y = m.val
+  })
+}

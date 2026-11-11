@@ -1,0 +1,24 @@
+// language/features/closures: test_closure_capture_ref
+
+
+struct Mover {
+  val: int
+}
+
+fn consume(func: fn()) {
+  func()
+}
+
+fn main() {
+  let m = Mover { val: 10 }
+  
+  // Capture by reference should NOT move 'm'
+  consume(fn[&]() {
+     let x = m.val 
+  })
+
+  // 'm' is still valid
+  consume(fn[&]() {
+     let y = m.val
+  })
+}

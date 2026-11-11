@@ -1,0 +1,30 @@
+// MISRA Dir 4.8 Verification
+// EXPECT: MISRA Dir 4.8: pointer to struct is never dereferenced (make it opaque)
+
+// This struct is fully exposed, but we only ever use pointers to it!
+struct ExposedButUnusedFields {
+    internal_data: int,
+    secret_flag: bool
+}
+
+// This struct is manipulated 
+struct UsedStruct {
+    x: int
+}
+
+fn do_work(u: UsedStruct*, e: ExposedButUnusedFields*) {
+    // We dereference 'u' by accessing its fields!
+    // So UsedStruct is fully utilized and properly exposed.
+    let _val = u.x;
+
+    // We NEVER dereference 'e'. It could be entirely opaque!
+    // -> Violation Dir 4.8 for ExposedButUnusedFields
+}
+
+fn main() {
+    let u: UsedStruct;
+    u.x = 0;
+    
+    let e = create();
+    do_work(&u, e);
+}

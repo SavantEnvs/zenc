@@ -1,0 +1,34 @@
+// language/generics: generics: test_recursive_instantiation
+
+fn alloc<T>() -> T* {
+    return (T*)malloc(sizeof(T));
+}
+
+struct Handle<T> {
+    data: T*;
+}
+
+impl Handle<T> {
+    fn new(value: T) -> Handle {
+        let b = Handle{};
+        b.data = alloc<T>(); 
+        *b.data = value;
+        return b;
+    }
+    
+    fn get(self) -> T {
+        return *self.data;
+    }
+}
+
+test "recursive generic instantiation" {
+    // Instantiate Handle<int>, which should instantiate alloc<i32> inside new()
+    let h = Handle<int>::new(42);
+    
+    // Verify the value
+    assert(h.get() == 42, "Handle<int> failed to store value");
+    
+    // Test with another type to ensure multiple instantiations work
+    let h2 = Handle<i64>::new(100);
+    assert(h2.get() == 100, "Handle<i64> failed to store value");
+}

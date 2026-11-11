@@ -1,0 +1,8 @@
+// EXPECT: FAIL
+// compiler/diagnostics: return inside a defer block should fail
+
+fn main() {
+    defer {
+        return;
+    }
+}

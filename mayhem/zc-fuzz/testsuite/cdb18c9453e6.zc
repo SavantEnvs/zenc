@@ -1,0 +1,17 @@
+// iterators: test_vec_iter
+import "std/vec.zc"
+
+test "vec_int_iteration" {
+    let v = Vec<int>::new();
+    v.push(10);
+    v.push(20);
+    v.push(30);
+
+    let sum = 0;
+    for x in v {
+        sum = sum + x;
+    }
+    
+    assert(sum == 60, "Expected 60, got {sum}");
+    v.free();
+}

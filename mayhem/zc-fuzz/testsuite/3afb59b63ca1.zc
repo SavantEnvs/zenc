@@ -1,0 +1,9 @@
+// EXPECT: FAIL
+// compiler/diagnostics: goto inside a defer block should fail
+
+fn main() {
+    defer {
+        goto end;
+    }
+    end: return;
+}

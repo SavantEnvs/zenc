@@ -1,0 +1,8 @@
+// Rule 17.3: A function shall not be declared implicitly.
+// In Zen C, all symbols must be declared/defined. Rule 17.3 is used to flag undefined symbols in MISRA mode.
+
+fn main() -> i32 {
+    let x = undefined_variable; // EXPECT: MISRA Rule 17.3
+    undefined_function();       // EXPECT: MISRA Rule 17.3
+    return 0;
+}

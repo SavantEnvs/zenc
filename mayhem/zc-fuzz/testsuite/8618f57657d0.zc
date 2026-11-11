@@ -1,0 +1,10 @@
+// EXPECT: FAIL
+
+fn foo(a: const [i32]) {
+    a[0] = 100
+}
+
+fn main() {
+    let a = [1,2,3,4,5]
+    foo(a)
+}

@@ -1,0 +1,9 @@
+// Rule 5.6: A typedef name shall be a unique identifier
+// EXPECT: MISRA Rule 5.3
+
+type _MyUniqueType = i32;
+
+fn main() {
+    // Should collide/violate 5.6 because _MyUniqueType is already a typedef
+    let _MyUniqueType = 1;
+}

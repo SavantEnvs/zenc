@@ -1,0 +1,21 @@
+// MISRA Rule 10.8 Verification
+// EXPECT: MISRA Rule 10.8
+// EXPECT: MISRA Rule 10.8
+
+fn test_10_8() {
+    let u16_a: u16 = 10;
+    let u16_b: u16 = 20;
+
+    // Violation: Casting result of composite expression to wider type
+    let _fail2 = (u32)(u16_a + u16_b);
+
+    // Violation: Casting result of composite expression to different category
+    let _fail3 = (i16)(u16_a + u16_b);
+    
+    // OK: cast operands first
+    let _ok2: u32 = (u32)u16_a + (u32)u16_b;
+}
+
+fn main() {
+    test_10_8();
+}

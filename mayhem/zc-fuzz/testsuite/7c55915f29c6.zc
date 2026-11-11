@@ -1,0 +1,10 @@
+// MISRA Rule 17.8 Verification
+// EXPECT: MISRA Rule 17.8
+
+fn test_param_mod(x: int) {
+    x = 10; 
+}
+
+fn main() {
+    test_param_mod(0);
+}
